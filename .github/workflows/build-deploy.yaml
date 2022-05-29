@@ -13,6 +13,5 @@ jobs:
         run: docker build . --file Dockerfile --tag my-image-name:${{ github.sha }}
       - name: docker login
         run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
-
-                 - name: push docker image
-                   run: docker push '${{secrets.DOCKER_LOGIN}}'/ctse-lab-12:'${{github.sha}}'
+      - name: push docker image
+        run: docker push '${{secrets.DOCKER_LOGIN}}'/ctse-lab-12:'${{github.sha}}'
