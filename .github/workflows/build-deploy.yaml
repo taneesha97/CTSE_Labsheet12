@@ -10,7 +10,7 @@ jobs:
       - name: run shell script
         run: echo commit hash is ${{ github.sha }}
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:${{ github.sha }}
+        run: docker build -t '${{secrets.DOCKER_LOGIN}}'/ctse-lab-12:'${{github.sha}}' .
       - name: docker login
         run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
       - name: push docker image
